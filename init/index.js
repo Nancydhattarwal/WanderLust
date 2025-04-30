@@ -3,7 +3,7 @@ const Listing = require("../models/listing.js");
 const User = require("../models/user");
 const initData = require("./data.js");
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/wander";
+const dbUrl = process.env.ATLASDB_URL;
 
 main()
   .then(() => {
@@ -14,7 +14,7 @@ main()
   });
 
 async function main() {
-  await mongoose.connect(MONGO_URL);
+  await mongoose.connect(dbUrl);
 };
 
 const initDB = async () =>{
