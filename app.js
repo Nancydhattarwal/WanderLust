@@ -58,7 +58,7 @@ store.on("error", () => {
 const sessionOptions = {
     store,
     secret: process.env.SECRET,
-    reserve:false,
+    resave:false,
     saveUninitialized:true,
     cookie: {
         expires: Date.now()+7*24*60*60*1000,
