@@ -20,13 +20,6 @@ const reviewRouter = require("./Routes/review.js");
 
 const dbUrl = process.env.ATLASDB_URL;
 
-async function main() {
-  await mongoose.connect(dbUrl, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  });
-}
-
 main()
   .then(() => {
     console.log("connected to DB");
@@ -35,12 +28,16 @@ main()
     console.log(err);
   });
 
+async function main() {
+  await mongoose.connect(dbUrl);
+};
+
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
-app.engine("ejs", ejsMate);
+app.engine("ejs",ejsMate);
 app.use(express.urlencoded({ extended: true }));
-app.use(methodOverride("_method"));
-app.use(express.static(path.join(__dirname, "public")));
+app.use(methodOverride('_method'));
+app.use(express.static(path.join(__dirname,"/public")));
 
 app.get("/", (req, res) => {
   res.redirect("/listings");
@@ -64,7 +61,6 @@ const sessionOptions = {
     resave:false,
     saveUninitialized:true,
     cookie: {
-        // secure: true, // enable in production
         expires: Date.now()+7*24*60*60*1000,
         maxAge: 7*24*60*60*1000,
         httpOnly: true,
