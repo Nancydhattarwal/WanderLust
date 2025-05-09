@@ -1,23 +1,36 @@
 <style>
-  .navbar .container-fluid {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  .navbar-collapse .navbar-nav:first-of-type {
+    display: none;
   }
-  form.d-flex {
-  flex-grow: 1;
-  max-width: 500px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+  .navbar-collapse {
+    display: flex !important;
+    align-items: center;
+    width: 100%;
   }
-  .navbar-nav.ms-auto {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+
+  .navbar-collapse .navbar-nav.ms-auto {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
   }
-  .search-btn {
+
+  .navbar-collapse .navbar-nav.ms-auto > a[href="/listings/new"] {
+    order: 1;
+  }
+
+  .navbar-collapse .navbar-nav.ms-auto > form {
+    order: 2;
+    flex: 1;
+    max-width: 500px;
+    margin: 0 1rem;
+  }
+
+  .navbar-collapse .navbar-nav.ms-auto > a.nav-link:not([href="/listings/new"]) {
+    order: 3;
+  }
+    .search-btn {
     background-color: #fe424d;
     color: #fff;
     border-radius: 25px;
