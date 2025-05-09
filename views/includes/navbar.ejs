@@ -1,37 +1,5 @@
 <style>
-  .navbar-collapse .navbar-nav:first-of-type {
-    display: none;
-  }
-
-  .navbar-collapse {
-    display: flex !important;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-  }
-
-  .navbar-collapse .navbar-nav.ms-auto {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    gap: 1rem;
-  }
-
-  .navbar-collapse .navbar-nav.ms-auto > a[href="/listings/new"] {
-    order: 1;
-  }
-
-  .navbar-collapse .navbar-nav.ms-auto > form {
-    order: 2;
-    flex: 1;
-    max-width: 500px;
-    margin: 0 1rem;
-  }
-
-  .navbar-collapse .navbar-nav.ms-auto > a.nav-link:not([href="/listings/new"]) {
-    order: 3;
-  }
-    .search-btn {
+  .search-btn {
     background-color: #fe424d;
     color: #fff;
     border-radius: 25px;
@@ -55,22 +23,25 @@
 
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
+      <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a> 
+
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
         <span class="navbar-toggler-icon"></span>
       </button>
+       
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <!-- <a class="nav-link" href="/">Home</a> -->
           <a class="nav-link" href="/listings">Explore</a>
         </div>
         <div class="navbar-nav ms-auto">
           <form class="d-flex" role="search">
-            <input type="search" class="form-control ml-2 search-inp" placeholder="search destinations">
-            <button class="search-btn" type="submit">
+            <input type="search" class="form-control ml-2 search-inp" placeholder="search destinations" aria-label="Search">
+            <button class="btn btn-search" type="submit">
               <i class="fa-solid fa-magnifying-glass"></i>Search
             </button>
           </form>
+        </div>
+        <div class="navbar-nav ms-auto">
           <a class="nav-link" href="/listings/new">Airbnb your home</a>
           <% if(!currUser) { %>
           <a class="nav-link" href="/signup"><b>Signup</b></a>
